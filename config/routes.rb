@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
+  resources :books do
+    collection do
+      get :sort
+    end
+  end
+  get "blogs/find"
+  post "blogs/find"
+  get "blogs/:id", to: "blogs#show"
+  
   get 'blogs/index'
+  post "blogs/index", to:"blogs#find"
+  
   get "blogs", to:"blogs#index"
   get "blogs/:page",to:"blogs#index"
   

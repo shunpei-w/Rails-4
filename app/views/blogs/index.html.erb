@@ -1,4 +1,21 @@
-<% @data.each do |obj| %>
+<%= form_tag url:({controller:"blog", action:"find"}) do %>
+    <tr><th>ブログタイトル</th>
+        <td><%= text_field_tag("find") %></td></tr>
+    <tr><th></th>
+        <td><%= submit_tag("検索" ) %></td></tr>
+    </tr>
+    <% end %>
+
+    <%= form_tag url:({controller:"blog", action:"index"}) do %>
+    <tr><th><th>表示順</th>
+        <td><%= select_tag("id",
+            options_for_select(["新しい順","古い順","閲覧数の多い順","閲覧数の少ない順"])) %></td></tr>
+    <tr><th></th>
+        <td><%= submit_tag("並び替え" ) %></td></tr>
+    </tr>
+    <% end %>
+    
+    <% @data.each do |obj| %>
     <h3 class="top_title"><a href="/blogs/show/<%= obj.id %>">
         <%= obj.title %></a></h3>
     <p class="top_read"><%= obj.read %><span class="top_created">
@@ -12,3 +29,5 @@
     <span></span>
     <a href="/blogs/<%= @page_num + 1 %>">次ページ＞＞</a>
 </div>
+
+

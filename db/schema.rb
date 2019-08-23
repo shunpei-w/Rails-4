@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_16_034122) do
+ActiveRecord::Schema.define(version: 2019_08_17_040925) do
 
   create_table "blogconfigs", force: :cascade do |t|
     t.text "title"
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 2019_08_16_034122) do
     t.text "read"
     t.text "content"
     t.integer "bloggenre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "blogs", force: :cascade do |t|
+    t.text "seach"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

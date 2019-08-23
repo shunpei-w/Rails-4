@@ -1,0 +1,20 @@
+<h1>blogs#Find</h1>
+<table>
+    <%= form_tag(controller:"blogs", action:"find") do %>
+    <tr><th>FIND</th>
+        <td><%= text_field_tag("find") %></td></tr>
+    <tr><th></th>
+        <td><%= submit_tag("Click") %></td></tr>
+    </tr>
+    <% end %>
+</table>
+<hr>
+<table>
+    <% @data.each do |obj| %>
+    <tr>
+        <th>タイトル:</th><td><td><%=link_to(obj.title, "/blogs/#{obj.id}") %></td>
+        <th>ジャンル:</th><td><%= obj.content %></td>
+    </tr>
+    <% end %>
+</table>
+
