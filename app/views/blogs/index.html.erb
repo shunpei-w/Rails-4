@@ -7,8 +7,8 @@
     <% end %>
 
     <%= form_tag url:({controller:"blog", action:"index"}) do %>
-    <tr><th><th>表示順</th>
-        <td><%= select_tag("id",
+    <tr><th><th>表示順</th></th>
+        <td><%= select_tag("s1",
             options_for_select(["新しい順","古い順","閲覧数の多い順","閲覧数の少ない順"])) %></td></tr>
     <tr><th></th>
         <td><%= submit_tag("並び替え" ) %></td></tr>
