@@ -1,67 +1,32 @@
 // Place all the styles related to the blogconfigs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body {
-    color: darkgray; font-size: 14pt;
+// Place all the styles related to the people controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+    color:darkgray;
+    font-size: 18pt;
     margin: 10px 20px;
 }
-#header {}
-#main {
-    width: 75%; float: left;
-}
-#side {
-    width: 20%; float: right;
+
+h1{
+    color: darkgray;
+    font-size: 32pt;
+    margin: 50px 0px;
 }
 
-h1 {
-    color: darkgray; font-size: 14pt;
-    margin: 30px 0px 70px 0px;
+table tr th {
+    background: #909090;
+    color: #f6f6f6;
+    padding: 10px;
+    font-size: 12pt;
+    font-weight: bold;
 }
-h2 {
-    color: darkgray; font-size: 14pt;
-    margin: 50px　0px;
-}
-hr {
-    display: block; height: 2px;
-    background-color: #eee;
-    border:  0;
-    margin: 50px 0px 0px 0px;
-}
-a {
-    color: darkgray;
-    text-decoration: none;
-}
-a:hover {
-    color: darkgray;
-    text-decoration:  underline;
-}
-
-.top_title {
-    color: darkgray; font-size: 18pt;
-    margin: 25px 0px;
-}
-.top_read {
-    color: darkgray; font-size: 12pt;
-    margin: 0px 0px 25px 50px;
-}
-.top_created {
-    font-size: 9pt;
-}
-.show_title {
-    color: darkgray; font-size: 18pt;
-    margin: 25px 0px;
-}
-.show_read {
-    color: darkgray; font-size: 18pt;
-    margin: 50px 20px;
-}
-.show_content {
-    color: darkgray ; font-size: 10pt;
-}
-.show_created{
-    text-align: rigth; font-size: 10pt;
-}
-.navigate {
-    text-align: center; font-size: 10pt;
-    margin: 50px;
+table tr td{
+    background: #f6f6f6;
+    color: #909090;
+    padding:  5px 10px;
+    font-size: 14pt;
 }
