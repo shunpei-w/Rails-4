@@ -10,7 +10,7 @@
 </table>
 <hr>
 <table>
-    <% @data.each do |obj| %>
+    <% @search.each do |obj| %>
     <tr>
         <th>タイトル:</th><td><td><%=link_to(obj.title, "/blogs/#{obj.id}") %></td>
         <th>ジャンル:</th><td><%= obj.content %></td>

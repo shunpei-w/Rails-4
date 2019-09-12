@@ -11,6 +11,12 @@ class BlogsController < ApplicationController
         .offset(page_size * @page_num)
         .limit(page_size)
     @blogconfig = Blogconfig.find 1
+
+    @search = Array.new
+    if request.post? then
+      obj = Blogpost.find params["find"]
+      @search.push obj
+    end
   end
 
 
@@ -34,10 +40,10 @@ class BlogsController < ApplicationController
 
   def find
     
-    @data = Array.new
+    @search = Array.new
     if request.post? then
-      @data = Blogpost.where title: params[:find]
+      obj = Blogpost.find params["find"]
+      @search.push obj
     end
   end
-
 end

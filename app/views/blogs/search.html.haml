@@ -1,0 +1,3 @@
+= search_form_for @search, url: search_blogs_path ,html: { method: :post } do |f|
+    = f.select( :sorts, { '降順': 'id desc', '昇順': 'id asc'} , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} )
+  = f.submit '完了'

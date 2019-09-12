@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       get :sort
     end
   end
+
   get "blogs/find"
   post "blogs/find"
   get "blogs/:id", to: "blogs#show"

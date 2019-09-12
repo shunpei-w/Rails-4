@@ -1,12 +1,23 @@
-<%= form_tag url:({controller:"blog", action:"find"}) do %>
+<%= form_tag url:({controller:"blogs", action:"find"}) do %>
     <tr><th>ブログタイトル</th>
-        <td><%= text_field_tag("find") %></td></tr>
+        <td><%= text_field_tag("index") %></td></tr>
     <tr><th></th>
         <td><%= submit_tag("検索" ) %></td></tr>
     </tr>
     <% end %>
 
-    <%= form_tag url:({controller:"blog", action:"index"}) do %>
+<table>
+    <% @search.each do |obj| %>
+    <tr>
+        <th>タイトル:</th><td><td><%=link_to(obj.title, "/blogs/#{obj.id}") %></td>
+        <th>ジャンル:</th><td><%= obj.content %></td>
+    </tr>
+    <% end %>
+</table>
+
+
+
+    <%= form_tag url:({controller:"blogs", action:"index"}) do %>
     <tr><th><th>表示順</th></th>
         <td><%= select_tag("s1",
             options_for_select(["新しい順","古い順","閲覧数の多い順","閲覧数の少ない順"])) %></td></tr>
