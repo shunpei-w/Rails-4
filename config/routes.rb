@@ -5,12 +5,14 @@ Rails.application.routes.draw do
     end
   end
 
-  get "blogs/find"
-  post "blogs/find"
+  get 'blogs/index'
+  post "blogs/index"
+
+  #get "blogs/find"
+  #post "blogs/find"
   get "blogs/:id", to: "blogs#show"
   
-  get 'blogs/index'
-  post "blogs/index", to:"blogs#find"
+  
   
   get "blogs", to:"blogs#index"
   get "blogs/:page",to:"blogs#index"

@@ -1,11 +1,13 @@
-<%= form_tag url:({controller:"blogs", action:"find"}) do %>
-    <tr><th>ブログタイトル</th>
-        <td><%= text_field_tag("index") %></td></tr>
+<table>
+    <%= form_tag(controller:"blogs", action:"index") do %>
+    <tr><th>FIND</th>
+        <td><%= text_field_tag("find") %></td></tr>
     <tr><th></th>
-        <td><%= submit_tag("検索" ) %></td></tr>
+        <td><%= submit_tag("検索") %></td></tr>
     </tr>
     <% end %>
-
+</table>
+<hr>
 <table>
     <% @search.each do |obj| %>
     <tr>
@@ -17,15 +19,14 @@
 
 
 
-    <%= form_tag url:({controller:"blogs", action:"index"}) do %>
-    <tr><th><th>表示順</th></th>
-        <td><%= select_tag("s1",
-            options_for_select(["新しい順","古い順","閲覧数の多い順","閲覧数の少ない順"])) %></td></tr>
-    <tr><th></th>
-        <td><%= submit_tag("並び替え" ) %></td></tr>
-    </tr>
-    <% end %>
-    
+<%= form_tag url:({controller:"blogs", action:"search"}) do %>
+<%= select_tag(:year, options_for_select([["新しい順","新しい順"],["古い順","古い順"]])) %>
+<%= submit_tag "絞り込み" %>
+<% end %>
+
+
+
+
     <% @data.each do |obj| %>
     <h3 class="top_title"><a href="/blogs/show/<%= obj.id %>">
         <%= obj.title %></a></h3>

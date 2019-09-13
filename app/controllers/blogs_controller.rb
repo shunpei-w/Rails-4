@@ -14,9 +14,18 @@ class BlogsController < ApplicationController
 
     @search = Array.new
     if request.post? then
-      obj = Blogpost.find params["find"]
-      @search.push obj
+      @search = Blogpost.where title: params[:find]
     end
+
+    logger.debug("if文の中に入りました")
+
+
+  def search
+      @abcs = Abc.where('year LIKE ?', "%#{params[:year]}%")
+      @year = Abc.group(:year).pluck(:year).sort　#ここを追加！
+      render :index
+  end
+
   end
 
 
@@ -39,6 +48,8 @@ class BlogsController < ApplicationController
   end
 
   def find
+
+    logger.debug("params")
     
     @search = Array.new
     if request.post? then
