@@ -1,8 +1,10 @@
 class BlogpostsController < ApplicationController
-    layout "blogposts"
+    layout 'blogposts'
+    impressionist :actions=> [:show]
+
   
     def index
-      @data = Blogpost.all.order("created_at desc")
+      @data = Blogpost.all.order('created_at desc')
     end
   
     def add
@@ -10,7 +12,7 @@ class BlogpostsController < ApplicationController
       @genres = Bloggenre.all
       if request.post? then
         @blogpost = Blogpost.create blogposts_params
-        redirect_to "/blogposts"
+        redirect_to '/blogposts'
       end
     end
   
@@ -19,7 +21,7 @@ class BlogpostsController < ApplicationController
       @genres = Bloggenre.all
       if request.patch? then
         @blogpost.update blogposts_params
-        redirect_to "/blogposts"
+        redirect_to '/blogposts'
       end
     end
   
@@ -27,7 +29,7 @@ class BlogpostsController < ApplicationController
       @blogpost = Blogpost.find(params[:id])
       if request.post? then
         @blogpost.destroy
-        redirect_to "/blogposts"
+        redirect_to '/blogposts'
       end
     end
   

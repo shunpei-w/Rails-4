@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   layout "blogs"
+  impressionist :actions=> [:show]
   
   def index
     page_size = 5
@@ -7,27 +8,25 @@ class BlogsController < ApplicationController
     if params[:page] != nil then
       @page_num = params[:page].to_i
     end
-    @data = Blogpost.all.order(params[:sort])
+    @data = Blogpost.all
         .offset(page_size * @page_num)
         .limit(page_size)
     @blogconfig = Blogconfig.find 1
 
+    if params[:id] == "古い順"
+      @data = Blogpost.all.order("created_at asc")
+    else
+      @data = Blogpost.all.order("created_at desc")
+    end
+
+
     @search = Array.new
     if request.post? then
       @search = Blogpost.where title: params[:find]
-    end
-
-    logger.debug("if文の中に入りました")
-
-
-  def search
-      @abcs = Abc.where('year LIKE ?', "%#{params[:year]}%")
-      @year = Abc.group(:year).pluck(:year).sort　#ここを追加！
-      render :index
+    end    
+    logger.debug("indexを通る")
+  
   end
-
-  end
-
 
   def genre
     page_size = 5
@@ -45,6 +44,8 @@ class BlogsController < ApplicationController
   def show
     @blogpost = Blogpost.find params[:id]
     @blogconfig = Blogconfig.find 1
+    @tweet = Blogpost.find(params[:id])
+    impressionist(@tweet, nil, :unique => [:session_hash])
   end
 
   def find

@@ -1,3 +1,3 @@
 class Blog < ApplicationRecord
-    default_scope -> { order(created_at: :id) }
+    is_impressionable
 end
