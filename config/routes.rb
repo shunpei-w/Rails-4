@@ -5,10 +5,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get "blogs/sort"
-  post "blogs/sort"
-
-
   get 'blogs/index'
   post "blogs/index"
 
@@ -27,6 +23,7 @@ Rails.application.routes.draw do
 
   get 'blogposts/index'
   get "blogposts",to: "blogposts#index"
+  post "blogposts/index"
 
   get 'blogposts/delete/:id',to:"blogposts#delete"
   post 'blogposts/delete',to:"blogposts#delete"

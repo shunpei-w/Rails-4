@@ -20,7 +20,7 @@
 
 
 <%= form_tag(controller:"blogs", action:"index") do %>
-<%= select_tag(:id, options_for_select([["新しい順","新しい順"],["古い順","古い順"]])) %>
+<%= select_tag(:id, options_for_select([["新しい順","新しい順"],["古い順","古い順"],["閲覧数の多い順","閲覧数の多い順"]])) %>
 <%= submit_tag "絞り込み" %>
 <% end %>
 
@@ -32,6 +32,7 @@
         <%= obj.title %></a></h3>
     <p class="top_read"><%= obj.read %><span class="top_created">
         (<%= obj.created_at %>)</span></p>
+        (<%= obj.count %>)
     <hr>
 <% end %>
 <div class="navigate">
@@ -41,5 +42,3 @@
     <span></span>
     <a href="/blogs/<%= @page_num + 1 %>">次ページ＞＞</a>
 </div>
-
-

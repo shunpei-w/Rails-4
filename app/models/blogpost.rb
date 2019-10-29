@@ -1,5 +1,5 @@
 class Blogpost < ApplicationRecord
-    is_impressionable
+    is_impressionable 
 
     belongs_to :bloggenre
 

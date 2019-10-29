@@ -1,10 +1,10 @@
 class BlogpostsController < ApplicationController
     layout 'blogposts'
-    impressionist :actions=> [:show]
+    impressionist
 
   
     def index
-      @data = Blogpost.all.order('created_at desc')
+      @data = Blogpost.all  
     end
   
     def add
@@ -35,7 +35,7 @@ class BlogpostsController < ApplicationController
   
     private
     def blogposts_params
-      params.require(:blogpost).permit(:title,:read,:content,:bloggenre_id)
+      params.require(:blogpost).permit(:title,:read,:content,:bloggenre_id,:count)
     end
     
   end

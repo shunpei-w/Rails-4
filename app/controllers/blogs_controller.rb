@@ -1,22 +1,43 @@
 class BlogsController < ApplicationController
   layout "blogs"
-  impressionist :actions=> [:show]
+  impressionist
   
   def index
+
     page_size = 5
     @page_num = 0
     if params[:page] != nil then
       @page_num = params[:page].to_i
     end
-    @data = Blogpost.all
-        .offset(page_size * @page_num)
-        .limit(page_size)
+    # @data = Blogpost.all.order(count: "desc")
+    #     .offset(page_size * @page_num)
+    #     .limit(page_size)
+
+    @data = Blogpost.all.order(count: "desc")
+    @data.each do |obj|
+      logger.debug(obj.count)
+    end
+
+
     @blogconfig = Blogconfig.find 1
 
-    if params[:id] == "古い順"
-      @data = Blogpost.all.order("created_at asc")
+
+
+    if params[:id] == "新しい順"
+      @data = Blogpost.all.order(id: "desc")
+      logger.debug("新しい順ここを通る")
+
+    elsif params[:id] == "古い順"
+      @data = Blogpost.all.order(id: "asc")
+      logger.debug("古い順ここを通る")
+      
+
     else
-      @data = Blogpost.all.order("created_at desc")
+      @data = Blogpost.all.order(count: "desc")
+      @data.each do |obj|
+        logger.debug(obj.id)
+      end
+      logger.debug("閲覧数ここを通る")
     end
 
 
@@ -24,7 +45,6 @@ class BlogsController < ApplicationController
     if request.post? then
       @search = Blogpost.where title: params[:find]
     end    
-    logger.debug("indexを通る")
   
   end
 
@@ -45,17 +65,8 @@ class BlogsController < ApplicationController
     @blogpost = Blogpost.find params[:id]
     @blogconfig = Blogconfig.find 1
     @tweet = Blogpost.find(params[:id])
-    impressionist(@tweet, nil, :unique => [:session_hash])
-  end
 
-  def find
-
-    logger.debug("params")
-    
-    @search = Array.new
-    if request.post? then
-      obj = Blogpost.find params["find"]
-      @search.push obj
-    end
+    @blogpost.count += 1
+    @blogpost.save
   end
 end

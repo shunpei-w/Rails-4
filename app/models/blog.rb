@@ -1,3 +1,3 @@
 class Blog < ApplicationRecord
-    is_impressionable
+    is_impressionable 
 end

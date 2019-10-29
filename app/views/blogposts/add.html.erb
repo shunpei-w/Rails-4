@@ -17,6 +17,8 @@
     <td><%= form.text_area :content,{cols:40,rows:10} %></td></tr>
 <tr><th>Genre ID</th>
     <td><%= form.text_field :bloggenre_id %></td></tr>
+<tr><th>閲覧数</th>
+    <td><%= form.number_field :count %></td></tr>
 <tr><th></th>
     <td><%= form.submit "送信" %></td></tr>
     <% end %>
